@@ -1,135 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/sortie.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plateforme de création de groupes GEI IT 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
-        section{
-            box-shadow: 0px 0px 8px 8px rgba(0, 0, 0, 0.1);
+        /* Polices personnalisées si tu en as, sinon j'utilise les standards propres */
+        .policeTitre { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .policeText { font-family: 'Inter', system-ui, sans-serif; }
 
+        section {
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
         }
-        td, th{
-            line-height: 40px;
-        }
-        tr:nth-child(even){
-            background-color: #fffbdf;
-        }
-        .policeTitre{
+        section:hover { transform: translateY(-2px); }
 
-        }
-        .policeText{
-
+        td, th { line-height: 40px; }
+        tr:nth-child(even) { background-color: #fffbdf; }
+        
+        /* Animation pour les boutons */
+        .btn-hover {
+            transition: all 0.3s shadow;
         }
     </style>
 </head>
-<body class="bg-white">
-    <header class="w-screen min-h-[10vh] md:p-10 flex max-md:p-7 bg-linear-to-r from-yellow-800 from-0% to-yellow-600 to-80%">
-        <div class="w-[15%] flex justify-center items-enter">
-            <i></i>
-        </div>
-        <div class="flex w-[85%] justify-center text-white policeTitre items-center font-bold text-4xl">
-            <h1>GEI IT 2 INSTI Lokossa</h1>
+<body class="bg-slate-50">
+
+    <header class="w-full min-h-[12vh] flex items-center px-6 md:px-12 bg-gradient-to-r from-yellow-800 to-yellow-600 shadow-lg">
+        <div class="flex items-center gap-4 w-full justify-center">
+            <i class="ri-team-fill text-white text-4xl"></i>
+            <h1 class="text-white policeTitre font-bold text-2xl md:text-4xl tracking-tight">
+                GEI IT 2 INSTI Lokossa
+            </h1>
         </div>
     </header>
-    <p class="italic text-center px-2 text-slate-600 text-xl policeText my-5">
-        Vous êtes sur la plateforme de constitution de groupes de Projets de la <span class="font-bold policeTitre">GEI IT 2 Lokossa</span>
-    </p>
-    <main class="px-3 w-screen">
-        <section class="p-2 my-12 bg-white rounded-sm">
-            <!-- flex flex-col justify-center items-center -->
-            <p class="font-semibold text-center text-2xl policeTitre my-2"><i></i> Les <span class="font-bold">Unités d'Enseignement</span> au programme:</p>
-            <div class="rounded-xs py-2 bg-amber-50/80">
-                <!-- w-3/4 -->
-                    <table>
-                        <thead class="my-3 border-b border-slate-400">
-                            <tr class="bg-white">
-                                <th class="w-[50%] policeTitre">UE</th>
-                                <th class="w-[50%] policeTitre">Crédit</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="w-[50%] policeText text-lg">Anglais Technique</td>
-                                <td class="w-[50%] policeText text-lg text-center font-bold">2</td>
-                            </tr>
-                            <tr>
-                                <td class="w-[50%] policeText text-lg" >POO Java</td>
-                                <td class="w-[50%] policeText text-lg text-center font-bold">--</td>
-                            </tr>
-                            <tr>
-                                <td class="w-[50%] policeText text-lg">Système d'Exploitation</td>
-                                <td class="w-[50%] policeText text-lg text-center font-bold">--</td>
-                            </tr>
-                            <tr>
-                                <td class="w-[50%] policeText text-lg">GPL</td>
-                                <td class="w-[50%] policeText text-lg text-center font-bold">--</td>
-                            </tr>
-                            <tr>
-                                <td class="w-[50%] policeText text-lg">Modélisation & UML</td>
-                                <td class="w-[50%] policeText text-lg text-center font-bold">--</td>
-                            </tr>
-                            <tr>
-                                <td class="w-[50%] policeText text-lg">ANA</td>
-                                <td class="w-[50%] policeText text-lg text-center font-bold">--</td>
-                            </tr>
-                            <tr>
-                                <td class="policeText flex flex-col text-lg" style="line-height: 20px">
-                                    <span class="w-full">PHP</span>
-                                    <span class="w-full">Client Léger API</span>
-                                </td>
-                                <td class="w-[50%] policeText text-lg text-center font-bold">6</td>
-                            </tr>
-                        </tbody>
-                    </table>
 
+    <div class="max-w-4xl mx-auto mt-8">
+        <p class="italic text-center px-4 text-slate-600 text-lg md:text-xl policeText">
+            <i class="ri-information-line align-middle text-yellow-600"></i> 
+            Vous êtes sur la plateforme de constitution de groupes de Projets de la 
+            <span class="font-bold text-yellow-800 policeTitre">GEI IT 2 Lokossa</span>
+        </p>
+    </div>
+
+    <main class="max-w-5xl mx-auto px-4 pb-12">
+        
+        <section class="p-6 my-10 bg-white rounded-xl border border-slate-100">
+            <p class="font-semibold text-center text-xl md:text-2xl policeTitre mb-6">
+                <i class="ri-book-open-line text-yellow-600 mr-2"></i> 
+                Les <span class="font-bold text-yellow-700">Unités d'Enseignement</span> au programme
+            </p>
+            
+            <div class="overflow-hidden rounded-xl border border-amber-100">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-amber-100">
+                        <tr class="text-yellow-900">
+                            <th class="px-6 py-3 policeTitre uppercase text-sm">Matière / UE</th>
+                            <th class="px-6 py-3 policeTitre uppercase text-sm text-center">Crédits</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-amber-50">
+                        <tr><td class="px-6 py-2 policeText">Anglais Technique</td><td class="text-center font-bold text-yellow-700">2</td></tr>
+                        <tr><td class="px-6 py-2 policeText">POO Java</td><td class="text-center font-bold text-slate-400">--</td></tr>
+                        <tr><td class="px-6 py-2 policeText">Système d'Exploitation</td><td class="text-center font-bold text-slate-400">--</td></tr>
+                        <tr><td class="px-6 py-2 policeText">GPL (Génie Logiciel)</td><td class="text-center font-bold text-slate-400">--</td></tr>
+                        <tr><td class="px-6 py-2 policeText">Modélisation & UML</td><td class="text-center font-bold text-slate-400">--</td></tr>
+                        <tr><td class="px-6 py-2 policeText">ANA (Analyse)</td><td class="text-center font-bold text-slate-400">--</td></tr>
+                        <tr class="bg-amber-50">
+                            <td class="px-6 py-3 policeText font-medium">PHP / Client Léger API</td>
+                            <td class="text-center font-bold text-yellow-700">6</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
-        <section class="my-12 p-3 rounded-lg">
-            <p class="font-semibold text-center text-2xl policeTitre my-2"><i></i> Les <span class="font-bold">Règles d'or</span> de la plateforme:</p>
-            <div class="border-amber-700 border-dashed border-2 rounded-lg p-3 text-xl">
-                <ul class="flex flex-col gap-4 text-xl">
-                    <li>
+
+        <section class="my-12 p-6 bg-white rounded-xl border border-slate-100">
+            <p class="font-semibold text-center text-xl md:text-2xl policeTitre mb-6">
+                <i class="ri-shield-check-line text-yellow-600 mr-2"></i> 
+                Les <span class="font-bold text-yellow-700">Règles d'or</span> de la plateforme
+            </p>
+            
+            <div class="border-2 border-dashed border-amber-400 rounded-xl p-6 bg-amber-50/30">
+                <ul class="space-y-6">
+                    <li class="flex gap-4">
+                        <i class="ri-fingerprint-line text-2xl text-yellow-700"></i>
                         <div>
-                            <h3 class="font-bold policeTitre">Identité et Conformité à la Liste Officielle <span class="text-red-500 text-2xl">*</span></h3>
-                            <div class="text-slate-600  text-lg italic policeText">
-                                "Le Nom et le Prénom saisis doivent correspondre exactement à ceux utiliser en situation de classe et connue de tous!"
-                            </div>
+                            <h3 class="font-bold text-lg policeTitre text-slate-800">Identité Officielle <span class="text-red-500">*</span></h3>
+                            <p class="text-slate-600 italic policeText">Le Nom et le Prénom doivent correspondre exactement à la liste de classe.</p>
                         </div>
                     </li>
-                    <li>
+                    <li class="flex gap-4">
+                        <i class="ri-focus-3-line text-2xl text-yellow-700"></i>
                         <div>
-                            <h3 class="font-bold policeTitre">Inscription unique par Matière <span class="text-red-500 text-2xl">*</span></h3>
-                            <div class="text-slate-600 text-lg italic policeText">
-                                "Un étudiant ne peut appartenir qu'à <b>un seul et unique groupe </b>pour une Unité d'Enseignement ou CE (UE/CE) donnée ; son <b>nom ou prénom</b> ne peut pas figurer dans deux (02) groupes différents ou Deux (02) fois dans le même groupe."
-                            </div>
+                            <h3 class="font-bold text-lg policeTitre text-slate-800">Inscription Unique <span class="text-red-500">*</span></h3>
+                            <p class="text-slate-600 italic policeText">Un étudiant ne peut figurer que dans <b>un seul groupe</b> par matière.</p>
                         </div>
                     </li>
-                    <li>
+                    <li class="flex gap-4">
+                        <i class="ri-group-line text-2xl text-yellow-700"></i>
                         <div>
-                            <h3 class="font-bold policeTitre">Effectif Strict du Groupe <span class="text-red-500 text-2xl">*</span></h3>
-                            <div class="text-slate-600 text-lg italic policeText">
-                                "Chaque groupe doit obligatoirement être composé de <b>5 ou 6 membres exactement</b> (ni moins de 5, ni plus de 6)."
-                            </div>
+                            <h3 class="font-bold text-lg policeTitre text-slate-800">Effectif Strict <span class="text-red-500">*</span></h3>
+                            <p class="text-slate-600 italic policeText">Obligatoirement <b>5 ou 6 membres</b> (ni plus, ni moins).</p>
                         </div>
                     </li>
-                    <li>
+                    <li class="flex gap-4">
+                        <i class="ri-women-line text-2xl text-pink-600"></i>
                         <div>
-                            <h3 class="font-bold policeTitre">Parité minimale <span class="text-red-500 text-2xl">*</span></h3>
-                            <div class="text-slate-600 text-lg italic policeText">
-                                "Chaque groupe constitué doit obligatoirement comporter <b>au minimum 1 fille</b>."
-                            </div>
+                            <h3 class="font-bold text-lg policeTitre text-slate-800">Mixité Obligatoire <span class="text-red-500">*</span></h3>
+                            <p class="text-slate-600 italic policeText">Au minimum <b>une (01) fille</b> par groupe.</p>
                         </div>
                     </li>
                 </ul>               
             </div>
         </section>
-        <button class="uppercase text-2xl cursor-pointer rounded-2xl p-3 text-center hover:bg-amber-700 duration-300 text-white bg-yellow-600 font-bold policeTitre mb-4"><a href="create.php" target="_blank"><i></i> Constituez un groupe</a></button>
-        <button class="uppercase text-2xl cursor-pointer rounded-2xl p-3 text-center hover:bg-amber-700 duration-300 text-white bg-yellow-600 font-bold policeTitre mb-2"><a href=""><i></i> Consultez les groupes existants</a></button>
+
+        <div class="flex flex-col md:flex-row gap-4 justify-center items-center mt-10">
+            <a href="create.php" target="_blank" class="w-full md:w-auto flex items-center justify-center gap-3 uppercase text-lg px-8 py-4 rounded-xl transition-all duration-300 text-white bg-yellow-600 hover:bg-yellow-700 hover:shadow-lg font-bold policeTitre">
+                <i class="ri-add-circle-line text-2xl"></i> Constituer un groupe
+            </a>
+            
+            <a href="#" class="w-full md:w-auto flex items-center justify-center gap-3 uppercase text-lg px-8 py-4 rounded-xl transition-all duration-300 text-white bg-slate-600 hover:bg-slate-700 hover:shadow-lg font-bold policeTitre">
+                <i class="ri-eye-line text-2xl"></i> Consulter les groupes
+            </a>
+        </div>
     </main>
-    <footer class="pt-7 pb-5 bg-slate-700 text-white text-center">
-        <p class="policeText">&copy; Copyright 2026</p>
+
+    <footer class="py-10 bg-slate-800 text-white text-center border-t-4 border-yellow-600">
+        <p class="policeText opacity-80">&copy; Copyright 2026 - GEI IT 2 INSTI Lokossa</p>
+        <p class="text-xs mt-2 text-slate-400 uppercase tracking-widest">Informatique Télécoms</p>
     </footer>
+
 </body>
 </html>
