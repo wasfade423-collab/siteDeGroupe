@@ -29,7 +29,7 @@
     </div>
 
     <main class="max-w-5xl mx-auto px-4 pb-12">
-        
+<!-- Les cours -->
         <section class="p-5 my-10 bg-white rounded-xl border border-slate-100">
             <p class="font-semibold text-center text-xl md:text-2xl policeTitre mb-6">
                 <i class="ri-book-open-line text-yellow-600 mr-2"></i> 
@@ -39,7 +39,7 @@
             <div class="overflow-hidden rounded-xl border border-amber-100">
                 <table class="w-full text-left border-collapse">
                     <thead class="bg-amber-100">
-                        <tr class="text-yellow-900">
+                        <tr class="bg-white">
                             <th class="px-6 py-3 policeTitre uppercase text-sm">UE</th>
                             <th class="px-6 py-3 policeTitre uppercase text-sm text-center">Crédits</th>
                         </tr>
@@ -77,7 +77,7 @@
                 </table>
             </div>
         </section>
-
+<!-- Les règles -->
         <section class="my-12 p-6 bg-white rounded-xl border border-slate-100">
             <p class="font-semibold text-center text-xl md:text-2xl policeTitre mb-6">
                 <i class="ri-shield-check-line text-yellow-600 mr-2"></i> 
@@ -117,6 +117,7 @@
                 </ul>               
             </div>
         </section>
+<!-- Le message d'erreur -->
         <div id="modalError" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex justify-center items-center p-4">
             <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center shadow-2xl fade-in border-t-8 border-red-500">
                 <i class="ri-error-warning-fill text-red-500 text-6xl"></i>
@@ -125,7 +126,7 @@
                 <button onclick="closeModal()" class="mt-6 w-full py-3 bg-slate-800 text-white rounded-xl font-bold hover:bg-slate-900 transition">J'ai compris</button>
             </div>
         </div>
-
+<!-- Les boutons d'actions -->
         <div class="flex flex-col gap-8 items-center mt-10">
             <label class="flex items-center gap-3 cursor-pointer group p-4 border-2 border-amber-200 rounded-2xl hover:bg-amber-50 transition shadow-sm">
                 <input type="checkbox" id="valid" class="w-6 h-6 rounded border-amber-400 text-yellow-600 focus:ring-yellow-500 cursor-pointer">
@@ -161,8 +162,8 @@
                 if(!validCheckbox.checked) {
                     modal.classList.remove("hidden");
                 } else {
-                    if(btn.classList.contains("create")) window.location.href = "create.php";
-                    if(btn.classList.contains("consult")) window.location.href = "consult.php";
+                    if(btn.classList.contains("create")) window.location.href = "create.html";
+                    if(btn.classList.contains("consult")) window.location.href = "consult.html";
                 }
             });
         });

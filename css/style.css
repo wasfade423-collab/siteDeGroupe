@@ -1,9 +1,14 @@
 
         /*Polices personnalisées*/
-        .policeTitre { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .policeText { font-family: 'Inter', system-ui, sans-serif; }
+        .policeTitre { 
+            font-family: 'Inter', sans-serif; 
+        }
+        .policeText { 
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+        }
 
-        section{
+        section, .section {
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease;
         }
