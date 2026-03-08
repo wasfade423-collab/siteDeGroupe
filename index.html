@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* Polices personnalisées si tu en as, sinon j'utilise les standards propres */
+        /*Polices personnalisées*/
         .policeTitre { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         .policeText { font-family: 'Inter', system-ui, sans-serif; }
 
@@ -18,10 +18,14 @@
         }
         section:hover { transform: translateY(-2px); }
 
-        td, th { line-height: 40px; }
-        tr:nth-child(even) { background-color: #fffbdf; }
+        td, th { 
+            line-height: 40px; 
+        }
+        tr:nth-child(even) {
+             background-color: #fffbdf; 
+        }
         
-        /* Animation pour les boutons */
+        /*Animation pour les boutons*/
         .btn-hover {
             transition: all 0.3s shadow;
         }
@@ -48,7 +52,7 @@
 
     <main class="max-w-5xl mx-auto px-4 pb-12">
         
-        <section class="p-6 my-10 bg-white rounded-xl border border-slate-100">
+        <section class="p-5 my-10 bg-white rounded-xl border border-slate-100">
             <p class="font-semibold text-center text-xl md:text-2xl policeTitre mb-6">
                 <i class="ri-book-open-line text-yellow-600 mr-2"></i> 
                 Les <span class="font-bold text-yellow-700">Unités d'Enseignement</span> au programme
@@ -58,19 +62,37 @@
                 <table class="w-full text-left border-collapse">
                     <thead class="bg-amber-100">
                         <tr class="text-yellow-900">
-                            <th class="px-6 py-3 policeTitre uppercase text-sm">Matière / UE</th>
+                            <th class="px-6 py-3 policeTitre uppercase text-sm">UE</th>
                             <th class="px-6 py-3 policeTitre uppercase text-sm text-center">Crédits</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-amber-50">
-                        <tr><td class="px-6 py-2 policeText">Anglais Technique</td><td class="text-center font-bold text-yellow-700">2</td></tr>
-                        <tr><td class="px-6 py-2 policeText">POO Java</td><td class="text-center font-bold text-slate-400">--</td></tr>
-                        <tr><td class="px-6 py-2 policeText">Système d'Exploitation</td><td class="text-center font-bold text-slate-400">--</td></tr>
-                        <tr><td class="px-6 py-2 policeText">GPL (Génie Logiciel)</td><td class="text-center font-bold text-slate-400">--</td></tr>
-                        <tr><td class="px-6 py-2 policeText">Modélisation & UML</td><td class="text-center font-bold text-slate-400">--</td></tr>
-                        <tr><td class="px-6 py-2 policeText">ANA (Analyse)</td><td class="text-center font-bold text-slate-400">--</td></tr>
+                        <tr>
+                            <td class="px-4 py-2 policeText">Anglais Technique</td>
+                            <td class="text-center font-bold text-yellow-700">2</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 policeText">POO Java</td>
+                            <td class="text-center font-bold text-yellow-700">--</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 policeText">Système d'Exploitation</td>
+                            <td class="text-center font-bold text-yellow-700">--</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 policeText">GPL (Génie Logiciel)</td>
+                            <td class="text-center font-bold text-yellow-700">--</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 policeText">Modélisation & UML</td>
+                            <td class="text-center font-bold text-yellow-700">--</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 policeText">ANA</td>
+                            <td class="text-center font-bold text-yellow-700">--</td>
+                        </tr>
                         <tr class="bg-amber-50">
-                            <td class="px-6 py-3 policeText font-medium">PHP / Client Léger API</td>
+                            <td class="px-4 py-3 policeText font-medium">PHP / Client Léger API</td>
                             <td class="text-center font-bold text-yellow-700">6</td>
                         </tr>
                     </tbody>
