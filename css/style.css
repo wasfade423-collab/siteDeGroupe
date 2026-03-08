@@ -1,0 +1,22 @@
+
+        /*Polices personnalisées*/
+        .policeTitre { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .policeText { font-family: 'Inter', system-ui, sans-serif; }
+
+        section{
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        section:hover { transform: translateY(-2px); }
+
+        td, th { 
+            line-height: 40px; 
+        }
+        tr:nth-child(even) {
+             background-color: #fffbdf; 
+        }
+        
+        /*Animation pour les boutons*/
+        .btn-hover {
+            transition: all 0.3s shadow;
+        }
