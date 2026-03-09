@@ -17,7 +17,7 @@
     </style>
 </head>
 <body class="bg-slate-50">
-
+<!-- Le header -->
     <header class="w-full py-6 flex items-center justify-between px-6 bg-gradient-to-r from-yellow-800 to-yellow-600 shadow-md">
         <div class="flex items-center gap-3">
             <a href="index.html" class="text-white hover:bg-white/20 p-2 rounded-full transition">
@@ -31,7 +31,7 @@
             <span class="hidden md:inline">Voir les règles</span>
         </button>
     </header>
-
+<!-- affiche les statisques -->
     <div class="w-full bg-white border-b border-slate-200 py-3 px-6 flex flex-wrap justify-center gap-6 shadow-sm">
         <div class="flex items-center gap-2 text-slate-600 text-sm font-medium">
             <i class="ri-folders-line text-yellow-600"></i>
@@ -47,13 +47,13 @@
 
     <main class="max-w-4xl mx-auto px-4 mt-8">
         <form action="" method="POST" class="space-y-8">
-            
+            <!-- Les matières  -->
             <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                 <div class="flex items-center gap-3 mb-6">
                     <i class="ri-book-open-fill text-yellow-600 text-2xl"></i>
                     <h2 class="text-lg font-bold text-slate-800">1. Quelle est la matière concernée ?</h2>
                 </div>
-                
+                <!-- Liste des matières -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <label class="relative flex items-center p-4 border-2 border-slate-100 rounded-xl cursor-pointer hover:border-yellow-300 has-[:checked]:border-yellow-600 has-[:checked]:bg-yellow-50 transition-all">
                         <input type="radio" name="matiere" value="php" class="hidden peer" required>
@@ -127,7 +127,7 @@
 <!-- Membre 1 -->                        
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-yellow-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">1</div>
-                        <input type="text" placeholder="NOM Prénom (Ex: KODJO Jean)" class="flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>                    
+                        <input type="text" placeholder="NOM Prénom (Ex: KODJO Jean)" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>                    
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
                                 <input type="radio" name="genre1" value="F" class="hidden" required>
@@ -138,11 +138,12 @@
                                 <i class="ri-men-line"></i> <span class="text-sm font-bold">M</span>
                             </label>
                         </div>
+                        <span class="text-red-500 text-xs font-bold ml-11 hidden msg-doublon"></span>
                     </div>
 <!-- Membre 2 -->
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-slate-200 text-slate-600 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
-                        <input type="text" placeholder="NOM Prénom" class="flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>
+                        <input type="text" placeholder="NOM Prénom" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
                                 <input type="radio" name="genre2" value="F" class="hidden" required>
@@ -153,11 +154,12 @@
                                 <i class="ri-men-line"></i> <span class="text-sm font-bold">M</span>
                             </label>
                         </div>
+                        <span class="text-red-500 text-xs font-bold ml-11 hidden msg-doublon"></span>
                     </div>
 <!-- Membre 3 -->
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-slate-200 text-slate-600 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">3</div>
-                        <input type="text" placeholder="NOM Prénom" class="flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>
+                        <input type="text" placeholder="NOM Prénom" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
                                 <input type="radio" name="genre3" value="F" class="hidden" required>
@@ -168,11 +170,12 @@
                                 <i class="ri-men-line"></i> <span class="text-sm font-bold">M</span>
                             </label>
                         </div>
+                        <span class="text-red-500 text-xs font-bold ml-11 hidden msg-doublon"></span>
                     </div>
 <!-- Membre 4 -->
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-slate-200 text-slate-600 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">4</div>
-                        <input type="text" placeholder="NOM Prénom" class="flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>
+                        <input type="text" placeholder="NOM Prénom" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
                                 <input type="radio" name="genre4" value="F" class="hidden" required>
@@ -183,11 +186,12 @@
                                 <i class="ri-men-line"></i> <span class="text-sm font-bold">M</span>
                             </label>
                         </div>
+                        <span class="text-red-500 text-xs font-bold ml-11 hidden msg-doublon"></span>
                     </div>
 <!-- Membre 5 -->
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-slate-200 text-slate-600 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">5</div>
-                        <input type="text" placeholder="NOM Prénom" class="flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>
+                        <input type="text" placeholder="NOM Prénom" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
                                 <input type="radio" name="genre5" value="F" class="hidden" required>
@@ -198,6 +202,7 @@
                                 <i class="ri-men-line"></i> <span class="text-sm font-bold">M</span>
                             </label>
                         </div>
+                        <span class="text-red-500 text-xs font-bold ml-11 hidden msg-doublon"></span>
                     </div>
 <!-- Membre 6 -->
 <!-- J'indique ici que le 6ieme membre n'est pas obligué -->
@@ -212,7 +217,7 @@
                     <div class="bg-slate-50 p-4 rounded-xl border border-dashed border-slate-300 flex flex-wrap md:flex-nowrap gap-4 items-center opacity-80 hover:opacity-100 transition-opacity">
                         <div class="bg-slate-400 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">6</div>
                         
-                        <input type="text" name="nom6" placeholder="NOM Prénom (Optionnel)" class="flex-1 bg-white border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500">
+                        <input type="text" name="nom6" placeholder="NOM Prénom (Optionnel)" class="input-nom flex-1 bg-white border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500">
                         
                         <div class="flex items-center bg-white p-1 rounded-lg border border-slate-200">
                             <label class="px-3 py-1 cursor-pointer has-[:checked]:bg-pink-50 has-[:checked]:text-pink-600 rounded-md transition-all">
@@ -224,12 +229,14 @@
                                 <i class="ri-men-line"></i> <span class="text-sm font-bold">M</span>
                             </label>
                         </div>
+                        <span class="text-red-500 text-xs font-bold ml-11 hidden msg-doublon"></span>
                     </div>
                 </div>
             </section>
 
+<!-- Boutton d'envoi -->
             <div class="pt-6">
-                <button type="submit" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-5 rounded-2xl text-xl shadow-lg shadow-yellow-600/20 transition-all flex items-center justify-center gap-3">
+                <button type="button" onclick="checkInputs()" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-5 rounded-2xl text-xl shadow-lg shadow-yellow-600/20 transition-all flex items-center justify-center gap-3">
                     <i class="ri-send-plane-fill"></i>
                     Enregistrer le groupe
                 </button>
@@ -258,6 +265,21 @@
             </ul>
             <button onclick="toggleRules()" class="w-full mt-6 py-3 bg-yellow-600 text-white rounded-xl font-bold">J'ai compris</button>
         </div>
+    </div>  
+    
+    <!-- il s'agit de l'erreur quand on n'a pas choisir une mtière -->
+    <div id="errorModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        
+        <div class="bg-white p-6 rounded-lg shadow-2xl w-80 text-center border-t-4 border-red-600">
+            <i class="ri-error-warning-fill text-red-500 text-4xl"></i>
+            <h3 class="text-red-600 text-xl font-bold mb-2">Action impossible</h3>
+            <p class="text-gray-600 mb-6">Veuillez sélectionner une matière avant de constituer un groupe.</p>
+            
+            <button onclick="closeModal()" 
+                class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded transition-colors shadow-md">
+                D'accord
+            </button>
+        </div>
     </div>    
 
 
@@ -265,6 +287,41 @@
         function toggleRules() {
             const modal = document.getElementById('rulesModal');
             modal.classList.toggle('hidden');
+        }        
+
+        let inputs = document.querySelectorAll(".input-nom");  
+        //cette fonction va m'aider à vérifier si la personne a au moins sélectionné une matière
+        function verifyMatiere(x){
+            if(x === "" || x === undefined){
+                return false;
+            }else{
+                return true;
+            }
+        }
+
+        //cette fonction va fermer le message d'erreur
+        function closeModal() {
+            document.getElementById('errorModal').classList.add('hidden');
+        }
+        //si on écrit un nom sans sélectionner de matière
+        inputs.forEach((input, index)=>{
+            input.addEventListener('input', ()=>{
+                let matiere = document.querySelector('input[name = "matiere"]:checked')?.value;      
+                if(!verifyMatiere(matiere)){
+                    document.getElementById("errorModal").classList.remove("hidden");
+                }
+            })
+        });
+
+        //lesnoms est un tableau des noms qui exstent
+        let lesnoms = [];
+
+        function checkInputs(){
+            inputs.forEach(input=>{
+                
+                lesnoms.push({"nom" : input.value, "sexe" : "F"});
+            })
+            console.log(lesnoms);
         }
     </script>
 </body>
