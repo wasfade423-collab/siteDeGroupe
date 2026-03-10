@@ -46,7 +46,7 @@
 
 
     <main class="max-w-4xl mx-auto px-4 mt-8">
-        <form action="" method="POST" class="space-y-8">
+        <form action="" method="POST" class="space-y-8" id="fomulaire">
             <!-- Les matières  -->
             <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                 <div class="flex items-center gap-3 mb-6">
@@ -311,24 +311,65 @@
             })
         });
 
-        //lesmembres est un tableau des noms qui exstent
-        let lesmembres = [];
-        let lesnoms = [];
-        let lessexes = [];
+//Cette fontion verifie et idenntidie les doublons
+        function checkText(Texts, elements){
+            let err = 0;
+            Texts.forEach((nom, index)=>{
+                if(Texts.indexOf(nom) !== index){
+                    elements[index].classList.add("bg-red-50");
+                    elements[index].classList.add("border");
+                    elements[index].classList.add("border-red-400");
+                    err++;
+                }
+            })       
+            if(err > 0){
+                return false;
+            }
+            if(err === 0){
+                return true;
+            }    
+        }
+//Cette fonction confirme le nombre de fille      
+        function countSexe(sexes){
+            if(sexes.length > 2 || sexes <= 0){
+                return false;
+            }
+            if(sexes.length> 0 && sexes.length<= 2){
+                return true;
+            }
+        }
 // Cette fonctin vérifie les champs.
         function checkInputs(){
+        //lesmembres est un tableau des noms qui exstent
+            let lesmembres = [];
+            let lesnoms = [];
+            let lessexes = [];
+            let lesfille = 0;            
             inputs.forEach(input => {
                 let leMembr = input.closest("div");
                 let radios = leMembr.querySelectorAll('input[type="radio"]'); 
                 radios.forEach(radio=>{
                     if(radio.checked){
                         lesmembres.push({"nom" : input.value, "sexe" : radio.value});
-                        lesnoms.push(input.value);
                         lessexes.push(radio.value);
+                        
+                        //je recupère le nombre de fille
+                        lessexes.forEach(sexe=>{
+                            if(sexe == "F"){
+                                lesfille++;
+                            }
+                        })
                     }
                 })
+                //Je verifie que aucun doublon de nom n'est envoyé
+                lesnoms.push(input.value.replaceAll(' ', '').toLowerCase());
             })
-            console.log(lesmembres);
+
+            if(!checkText(lesnoms, inputs) || !countSexe(lesfille)){
+                
+            }else{
+                document.getElementById("formulaire").submit();
+            }
         }
     </script>
 </body>
