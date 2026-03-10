@@ -260,8 +260,8 @@
     </div>  
     
     <!-- il s'agit de l'erreur quand on n'a pas choisir une mtière -->
-    <div id="errorModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">        
-        <div class="bg-white p-6 rounded-lg shadow-2xl max-w-md w-full text-center border-t-4 border-red-600">
+    <div id="errorModal" class="hidden fixed inset-0 bg-black/50 flex justify-center items-center z-50 p-4">        
+        <div class="bg-white p-6 h-[35vh] rounded-lg shadow-2xl max-w-md w-full text-center border-t-4 border-red-600">
             <i class="ri-error-warning-fill text-red-500 text-4xl"></i>
             <h3 class="text-red-600 text-xl font-bold mb-2">Action impossible</h3>
             <p class="text-gray-600 mb-6">Veuillez sélectionner une matière avant de constituer un groupe.</p>
@@ -331,7 +331,7 @@
                 return true;
             }
         }
-// Cette fonctin vérifie les champs.
+// Cette fonctin vérifie les champs et envoie..
         function checkInputs(){
         //lesmembres est un tableau des noms qui exstent
             let lesmembres = [];
