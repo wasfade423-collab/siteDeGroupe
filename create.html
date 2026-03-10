@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Constitution de Groupe - GEI IT 2</title>
+    <title>Plateforme de création de groupes GEI IT 2</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        .policeTitre { 
-            font-family: 'Inter', sans-serif; 
-        }
         input:focus { 
             transform: scale(1.01); 
             transition: all 0.2s; 
@@ -46,7 +44,7 @@
 
 
     <main class="max-w-4xl mx-auto px-4 mt-8">
-        <form action="" method="POST" class="space-y-8" id="fomulaire">
+        <form action="" method="POST" class="space-y-8" id="formulaire">
             <!-- Les matières  -->
             <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                 <div class="flex items-center gap-3 mb-6">
@@ -273,6 +271,20 @@
         </div>
     </div>    
 
+    <!-- il s'agit de l'erreur quand on na envoyé les données erronnées. -->
+    <div id="refreshModal" class="hidden fixed inset-0 bg-black/50 flex justify-center items-center z-50 p-4">        
+        <div class="bg-white p-6 h-[35vh] rounded-lg shadow-2xl max-w-md w-full text-center border-t-4 border-red-600">
+            <i class="ri-refresh-line text-red-500 text-4xl"></i>
+            
+            <h3 class="text-red-600 text-xl font-bold mb-2">Entrés invalides</h3>
+            <p class="text-gray-600 mb-6">Vous devez réactualiser la page pour la constitution du groupe.</p>
+            
+            <button onclick="location.reload()" 
+                class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded transition-colors shadow-md">
+                Réactualiser maintenant
+            </button>
+        </div>
+    </div>
 
     <script>
         function toggleRules() {
@@ -294,6 +306,13 @@
         function closeModal() {
             document.getElementById('errorModal').classList.add('hidden');
         }
+        //cette fonctionne m'affihe le modal d'actualisation
+        function showRefreshError() {
+            document.getElementById('refreshModal').classList.remove('hidden');
+        }
+        
+        
+
         //si on écrit un nom sans sélectionner de matière
         inputs.forEach((input, index)=>{
             input.addEventListener('input', ()=>{
@@ -360,7 +379,7 @@
             if(checkText(lesnoms, inputs) && countSexe(lesfille)){ 
                 document.getElementById("formulaire").submit();
             }else{
-
+                showRefreshError();
             }
         }
     </script>
