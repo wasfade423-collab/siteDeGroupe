@@ -105,13 +105,6 @@
                         <i class="ri-checkbox-circle-fill absolute right-4 text-yellow-600 opacity-0 peer-checked:opacity-100 transition-opacity"></i>
                     </label>
 
-                    <label class="relative flex items-center p-4 border-2 border-slate-100 rounded-xl cursor-pointer hover:border-yellow-300 has-[:checked]:border-yellow-600 has-[:checked]:bg-yellow-50 transition-all">
-                        <input type="radio" name="matiere" value="java" class="hidden peer">
-                        <div class="flex flex-col">
-                            <span class="font-bold text-slate-700">POO Java</span>
-                        </div>
-                        <i class="ri-checkbox-circle-fill absolute right-4 text-yellow-600 opacity-0 peer-checked:opacity-100 transition-opacity"></i>
-                    </label>
                 </div>
             </section>
 <!-- Les membres -->
@@ -268,7 +261,7 @@
     
     <!-- il s'agit de l'erreur quand on n'a pas choisir une mtière -->
     <div id="errorModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">        
-        <div class="bg-white p-6 rounded-lg shadow-2xl w-80vh text-center border-t-4 border-red-600">
+        <div class="bg-white p-6 rounded-lg shadow-2xl max-w-md w-full text-center border-t-4 border-red-600">
             <i class="ri-error-warning-fill text-red-500 text-4xl"></i>
             <h3 class="text-red-600 text-xl font-bold mb-2">Action impossible</h3>
             <p class="text-gray-600 mb-6">Veuillez sélectionner une matière avant de constituer un groupe.</p>
@@ -331,10 +324,10 @@
         }
 //Cette fonction confirme le nombre de fille      
         function countSexe(sexes){
-            if(sexes.length > 2 || sexes <= 0){
+            if(sexes > 2 || sexes <= 0){
                 return false;
             }
-            if(sexes.length> 0 && sexes.length<= 2){
+            if(sexes > 0 && sexes<= 2){
                 return true;
             }
         }
@@ -354,21 +347,20 @@
                         lessexes.push(radio.value);
                         
                         //je recupère le nombre de fille
-                        lessexes.forEach(sexe=>{
-                            if(sexe == "F"){
-                                lesfille++;
-                            }
-                        })
                     }
                 })
                 //Je verifie que aucun doublon de nom n'est envoyé
                 lesnoms.push(input.value.replaceAll(' ', '').toLowerCase());
             })
-
-            if(!checkText(lesnoms, inputs) || !countSexe(lesfille)){
-                
-            }else{
+            lessexes.forEach(sexe=>{
+                if(sexe === "F"){
+                    lesfille++;
+                }
+            })
+            if(checkText(lesnoms, inputs) && countSexe(lesfille)){ 
                 document.getElementById("formulaire").submit();
+            }else{
+
             }
         }
     </script>
