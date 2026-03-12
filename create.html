@@ -312,12 +312,83 @@
             </div>
         </div>
     </div>
+    <!-- Ici il y a le modal qui va s'"afficher si un groupe essaie d'envoyer un nom qui n'est pas dans la liste de la classe."-->
+    <div id="horsClasse" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">        
+        <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-md w-full text-center border-t-4 border-red-600 animate-in fade-in zoom-in duration-200">
+            
+            <div class="mb-4">
+                <i class="ri-user-unfollow-fill text-red-500 text-5xl"></i>
+            </div>
+
+            <h3 class="text-red-600 text-xl font-bold mb-2 policeTitre">Étudiant(s) introuvable(s)</h3>
+            
+            <p class="text-gray-600 text-sm mb-4 policeText">
+                Les noms suivants ne figurent pas sur la liste officielle de la classe :
+            </p>
+
+            <div id="invalidNamesList" class="bg-red-50 rounded-xl p-4 mb-6 max-h-40 overflow-y-auto border border-red-100">
+                <ul>
+                    <!-- Ici vous enumérez les noms qui ne sont pas dans la database. -->
+                </ul>
+            </div>
+            
+            <p class="text-xs text-gray-400 mb-6 italic">
+                Vérifiez l'orthographe (NOM en majuscules) ou nous demandez simplement quoi écris..
+            </p>
+
+            <button onclick="closehorsClasse()" 
+                class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md active:scale-95">
+                Corriger les noms
+            </button>
+        </div>
+    </div> 
+    <!-- Ici il y a le modal qui va s'"afficher si un groupe essaie d'envoyer un nom qui  est déjà dans un groupe."-->
+    <div id="occupes" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">        
+        <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-md w-full text-center border-t-4 border-red-600 animate-in fade-in zoom-in duration-200">
+            
+            <div class="mb-4">
+                <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-red-100">
+                    <i class="ri-user-shared-2-fill text-red-600 text-4xl"></i>
+                </div>
+            </div>
+
+            <h3 class="text-red-600 text-xl font-bold mb-2 policeTitre">Attentative de Double Inscription</h3>
+            
+            <p class="text-gray-600 text-sm mb-4 policeText">
+                Action refusée : certains membres ont déjà été enregistrés dans un autre groupe.
+            </p>
+
+            <div id="duplicateStudentsList" class="bg-amber-50 rounded-xl p-4 mb-6 max-h-40 overflow-y-auto border border-amber-100 text-left">
+                <ul>
+                    <!-- Liste des étudiants doublons.. -->
+                </ul>
+            </div>
+            
+            <p class="text-[10px] text-gray-400 mb-6 italic">
+                Note : Un étudiant ne peut figurer que dans un seul groupe pour un projet.
+            </p>
+
+            <button onclick="closeoccupes()" 
+                class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md active:scale-95">
+                Modifier la liste
+            </button>
+        </div>
+    </div>
     <script>
         function toggleRules() {
             const modal = document.getElementById('rulesModal');
             modal.classList.toggle('hidden');
         }   
 
+        //fonction qui se déclenche quand il y a erreur serveur: Le nom envoyé ne se trouve pas dans la base.
+        function horsClasse(){
+            document.getElementById("horsClasse").classList.remove("hidden");
+        }
+
+        //fonction qui ferme le modal de la fonctio si dessus
+        function closehorsClasse(){
+            document.getElementById("horsClasse").classList.add("hidden");
+        }
         //fonction pour le cas où le groupe à bien été crée     
         function successModal(){
             document.getElementById("successModal").classList.remove("hidden");
@@ -341,7 +412,15 @@
             document.getElementById('refreshModal').classList.remove('hidden');
         }
         
-        
+        //fonction qui affiche les noms qui déjà dans un groupe
+        function occupes(){
+            document.getElementById("occupes").classList.remove("hidden");
+        }
+
+        //fonction qui ferme le modal de la fonctio si dessus
+        function closeoccupes(){
+            document.getElementById("occupes").classList.add("hidden");
+        }
 
         //si on écrit un nom sans sélectionner de matière
         inputs.forEach((input, index)=>{
