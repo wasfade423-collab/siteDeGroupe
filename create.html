@@ -38,7 +38,7 @@
         <div class="h-4 w-px bg-slate-300 hidden md:block"></div>
         <div class="flex items-center gap-2 text-slate-600 text-sm font-medium">
             <i class="ri-user-add-line text-yellow-600"></i>
-            <span>Groupes de 6 : <b class="text-slate-900">3</b></span>
+            <span>Groupes de 6 : <b class="text-slate-900" id="nbrDe3">3</b></span>
         </div>
     </div>
 
@@ -196,7 +196,7 @@
                         <span class="text-red-500 text-xs font-bold ml-11 hidden msg-doublon"></span>
                     </div>
 <!-- J'indique ici que le 6ieme membre n'est pas obligué -->
-                    <div class="flex items-center gap-4 my-6">
+                    <div class="option flex items-center gap-4 my-6">
                         <div class="h-px bg-slate-200 flex-1"></div>
                         <span class="bg-amber-100 text-amber-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                             <i class="ri-information-line"></i> 6ème membre facultatif
@@ -204,10 +204,10 @@
                         <div class="h-px bg-slate-200 flex-1"></div>
                     </div>
 <!-- Membre 6 -->
-                    <div class="bg-slate-50 p-4 rounded-xl border border-dashed border-slate-300 flex flex-wrap md:flex-nowrap gap-4 items-center opacity-80 hover:opacity-100 transition-opacity">
+                    <div class="option bg-slate-50 p-4 rounded-xl border border-dashed border-slate-300 flex flex-wrap md:flex-nowrap gap-4 items-center opacity-80 hover:opacity-100 transition-opacity">
                         <div class="bg-slate-400 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">6</div>
                         
-                        <input type="text" name="nom6" placeholder="NOM Prénom (Optionnel)" class="input-nom flex-1 bg-white border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500">
+                        <input type="text" name="nom6" placeholder="NOM Prénom (Optionnel)"  class="input-nom flex-1 bg-white border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500">
                         
                         <div class="flex items-center bg-white p-1 rounded-lg border border-slate-200">
                             <label class="px-3 py-1 cursor-pointer has-[:checked]:bg-pink-50 has-[:checked]:text-pink-600 rounded-md transition-all">
@@ -286,12 +286,42 @@
         </div>
     </div>
 
+    <!-- Il s'agit du modal qui s'affiche quand le groupe est bien crée -->
+    <div id="successModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">        
+        <div class="bg-white p-6 min-h-[40vh] rounded-2xl shadow-2xl max-w-md w-full text-center border-t-8 border-emerald-600 flex flex-col justify-center items-center animate-in fade-in zoom-in duration-300">
+            
+            <div class="mb-4 bg-emerald-100 w-20 h-20 rounded-full flex items-center justify-center">
+                <i class="ri-checkbox-circle-fill text-emerald-600 text-5xl"></i>
+            </div>
+
+            <h3 class="text-emerald-700 text-2xl font-bold mb-2 policeTitre">Groupe Enregistré !</h3>
+            <p class="text-slate-600 mb-8 policeText">
+                Félicitations, votre groupe a été constitué avec succès.
+            </p>
+            
+            <div class="flex flex-col w-full gap-3">
+                <a href="consult.html" 
+                class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md flex items-center justify-center gap-2">
+                    <i class="ri-eye-line text-xl"></i> Consulter les groupes
+                </a>
+                
+                <a href="index.html" 
+                class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2">
+                    <i class="ri-home-4-line text-xl"></i> Retour à l'accueil
+                </a>
+            </div>
+        </div>
+    </div>
     <script>
         function toggleRules() {
             const modal = document.getElementById('rulesModal');
             modal.classList.toggle('hidden');
-        }        
+        }   
 
+        //fonction pour le cas où le groupe à bien été crée     
+        function successModal(){
+            document.getElementById("successModal").classList.remove("hidden");
+        }
         let inputs = document.querySelectorAll(".input-nom");  
         //cette fonction va m'aider à vérifier si la personne a au moins sélectionné une matière
         function verifyMatiere(x){
@@ -378,10 +408,20 @@
             })
             if(checkText(lesnoms, inputs) && countSexe(lesfille)){ 
                 document.getElementById("formulaire").submit();
+                successModal();
             }else{
                 showRefreshError();
             }
         }
+//cette partie me permet de désactiver automatiquement le 6e champ d'un groupe en même temps.     
+        let nbrDe3 = document.getElementById("nbrDe3");
+        if(nbrDe3.textContent === "3"){
+            let sixs = document.querySelectorAll(".option");
+            sixs.forEach(six=>{
+                six.classList.add("hidden");
+            })
+        }
+
     </script>
 </body>
 </html>
