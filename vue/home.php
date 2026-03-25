@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-slate-50">
 
@@ -162,8 +162,14 @@
                 if(!validCheckbox.checked) {
                     modal.classList.remove("hidden");
                 } else {
-                    if(btn.classList.contains("create")) window.location.href = "create.html";
-                    if(btn.classList.contains("consult")) window.location.href = "consult.html";
+                    if(btn.classList.contains("create")) 
+                    {
+                        window.location.href = "/siteDeGroupe/create";
+                    }
+                    if(btn.classList.contains("consult")) 
+                    {
+                        window.location.href = "/siteDeGroupe/consult";
+                    }
                 }
             });
         });

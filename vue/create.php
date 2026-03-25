@@ -6,7 +6,7 @@
     <title>Plateforme de création de groupes GEI IT 2</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         input:focus { 
             transform: scale(1.01); 
@@ -14,11 +14,14 @@
         }
     </style>
 </head>
+
+
+<!-- Problème problème je dois fais un Required. -->
 <body class="bg-slate-50">
 <!-- Le header -->
     <header class="w-full py-6 flex items-center justify-between px-6 bg-gradient-to-r from-yellow-800 to-yellow-600 shadow-md">
         <div class="flex items-center gap-3">
-            <a href="index.html" class="text-white hover:bg-white/20 p-2 rounded-full transition">
+            <a href="/siteDeGroupe/home" class="text-white hover:bg-white/20 p-2 rounded-full transition">
                 <i class="ri-arrow-left-line text-2xl"></i>
             </a>
             <h1 class="text-white font-bold text-xl md:text-2xl tracking-tight">Configuration du Groupe</h1>
@@ -33,7 +36,15 @@
     <div class="w-full bg-white border-b border-slate-200 py-3 px-6 flex flex-wrap justify-center gap-6 shadow-sm">
         <div class="flex items-center gap-2 text-slate-600 text-sm font-medium">
             <i class="ri-folders-line text-yellow-600"></i>
-            <span>Groupes créés : <b class="text-slate-900">12</b></span>
+            <span>Groupes créés : <b class="text-slate-900">
+                <?php
+                    if(isset($nbreGroupe)){
+                        echo $nbreGroupe;
+                    }else{
+                        echo "0";
+                    }
+                ?>
+            </b></span>
         </div>
         <div class="h-4 w-px bg-slate-300 hidden md:block"></div>
         <div class="flex items-center gap-2 text-slate-600 text-sm font-medium">
@@ -44,8 +55,8 @@
 
 
     <main class="max-w-4xl mx-auto px-4 mt-8">
-        <form action="" method="POST" class="space-y-8" id="formulaire">
-            <!-- Les matières  -->
+        <form action="/siteDeGroupe/newGroupe" method="POST" class="space-y-8" id="formulaire">
+            <!-- Les matières -->
             <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                 <div class="flex items-center gap-3 mb-6">
                     <i class="ri-book-open-fill text-yellow-600 text-2xl"></i>
@@ -118,14 +129,16 @@
 <!-- Membre 1 -->                        
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-yellow-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">1</div>
-                        <input type="text" placeholder="NOM Prénom (Ex: KODJO Jean)" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>                    
+                        <input type="text" placeholder="NOM Prénom (Ex: KODJO Jean)" name="nomPrenoms[]" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required
+                            value="<?= isset($membres) ? $membres[0]["nom"]." ".$membres[0]["prenom"] : "" ?>"
+                        >                    
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
-                                <input type="radio" name="genre1" value="F" class="hidden" required>
+                                <input type="radio" name="sexes[0]" value="F" class="hidden" <?= @$membres[0]["sexe"]=== "F" ? "checked" : "" ?> required>
                                 <i class="ri-women-line"></i> <span class="text-sm font-bold">F</span>
                             </label>
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-blue-600 has-[:checked]:shadow-sm rounded-md transition-all">
-                                <input type="radio" name="genre1" value="M" class="hidden">
+                                <input type="radio" name="sexes[0]" value="M" class="hidden" <?= @$membres[0]["sexe"]=== "M" ? "checked" : "" ?>>
                                 <i class="ri-men-line"></i> <span class="text-sm font-bold">M</span>
                             </label>
                         </div>
@@ -134,14 +147,16 @@
 <!-- Membre 2 -->
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-slate-200 text-slate-600 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
-                        <input type="text" placeholder="NOM Prénom" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>
+                        <input type="text" placeholder="NOM Prénom" name="nomPrenoms[]" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required
+                            value="<?= isset($membres) ? $membres[1]["nom"]." ".$membres[1]["prenom"] : "" ?>"
+                        >
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
-                                <input type="radio" name="genre2" value="F" class="hidden" required>
+                                <input type="radio" name="sexes[1]" value="F" class="hidden" required <?= @$membres[1]["sexe"]=== "F" ? "checked" : "" ?>>
                                 <i class="ri-women-line"></i> <span class="text-sm font-bold">F</span>
                             </label>
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-blue-600 has-[:checked]:shadow-sm rounded-md transition-all">
-                                <input type="radio" name="genre2" value="M" class="hidden">
+                                <input type="radio" name="sexes[1]" value="M" class="hidden" <?= @$membres[1]["sexe"]=== "M" ? "checked" : "" ?>>
                                 <i class="ri-men-line"></i> <span class="text-sm font-bold">M</span>
                             </label>
                         </div>
@@ -150,14 +165,16 @@
 <!-- Membre 3 -->
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-slate-200 text-slate-600 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">3</div>
-                        <input type="text" placeholder="NOM Prénom" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>
+                        <input type="text" placeholder="NOM Prénom" name="nomPrenoms[]" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required
+                            value="<?= isset($membres) ? $membres[2]["nom"]." ".$membres[2]["prenom"] : "" ?>"
+                        >
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
-                                <input type="radio" name="genre3" value="F" class="hidden" required>
+                                <input type="radio" name="sexes[2]" value="F" class="hidden" required <?= @$membres[2]["sexe"]=== "F" ? "checked" : "" ?>>
                                 <i class="ri-women-line"></i> <span class="text-sm font-bold">F</span>
                             </label>
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-blue-600 has-[:checked]:shadow-sm rounded-md transition-all">
-                                <input type="radio" name="genre3" value="M" class="hidden">
+                                <input type="radio" name="sexes[2]" value="M" class="hidden" <?= @$membres[2]["sexe"]=== "M" ? "checked" : "" ?>>
                                 <i class="ri-men-line"></i> <span class="text-sm font-bold">M</span>
                             </label>
                         </div>
@@ -166,14 +183,16 @@
 <!-- Membre 4 -->
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-slate-200 text-slate-600 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">4</div>
-                        <input type="text" placeholder="NOM Prénom" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>
+                        <input type="text" placeholder="NOM Prénom" name="nomPrenoms[]" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required
+                            value="<?= isset($membres) ? $membres[3]["nom"]." ".$membres[3]["prenom"] : "" ?>"
+                        >
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
-                                <input type="radio" name="genre4" value="F" class="hidden" required>
+                                <input type="radio" name="sexes[3]" value="F" class="hidden" required  <?= @$membres[3]["sexe"]=== "F" ? "checked" : "" ?>>
                                 <i class="ri-women-line"></i> <span class="text-sm font-bold">F</span>
                             </label>
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-blue-600 has-[:checked]:shadow-sm rounded-md transition-all">
-                                <input type="radio" name="genre4" value="M" class="hidden">
+                                <input type="radio" name="sexes[3]" value="M" class="hidden"  <?= @$membres[3]["sexe"]=== "M" ? "checked" : "" ?>>
                                 <i class="ri-men-line"></i> <span class="text-sm font-bold">M</span>
                             </label>
                         </div>
@@ -182,14 +201,16 @@
 <!-- Membre 5 -->
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-slate-200 text-slate-600 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">5</div>
-                        <input type="text" placeholder="NOM Prénom" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required>
+                        <input type="text" placeholder="NOM Prénom" name="nomPrenoms[]" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required
+                            value="<?= isset($membres) ? $membres[4]["nom"]." ".$membres[4]["prenom"] : "" ?>"
+                        >
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
-                                <input type="radio" name="genre5" value="F" class="hidden" required>
+                                <input type="radio" name="sexes[4]" value="F" class="hidden" required  <?= @$membres[4]["sexe"]=== "F" ? "checked" : "" ?>>
                                 <i class="ri-women-line"></i> <span class="text-sm font-bold">F</span>
                             </label>
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-blue-600 has-[:checked]:shadow-sm rounded-md transition-all">
-                                <input type="radio" name="genre5" value="M" class="hidden">
+                                <input type="radio" name="sexes[4]" value="M" class="hidden"  <?= @$membres[4]["sexe"]=== "M" ? "checked" : "" ?>>
                                 <i class="ri-men-line"></i> <span class="text-sm font-bold">M</span>
                             </label>
                         </div>
@@ -207,15 +228,17 @@
                     <div class="option bg-slate-50 p-4 rounded-xl border border-dashed border-slate-300 flex flex-wrap md:flex-nowrap gap-4 items-center opacity-80 hover:opacity-100 transition-opacity">
                         <div class="bg-slate-400 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">6</div>
                         
-                        <input type="text" name="nom6" placeholder="NOM Prénom (Optionnel)"  class="input-nom flex-1 bg-white border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500">
+                        <input type="text" placeholder="NOM Prénom (Optionnel)"  name="nomPrenoms[]" class="input-nom flex-1 bg-white border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500"
+                            value="<?= isset($membres) ? $membres[5]["nom"]." ".$membres[5]["prenom"] : "" ?>"
+                        >
                         
                         <div class="flex items-center bg-white p-1 rounded-lg border border-slate-200">
                             <label class="px-3 py-1 cursor-pointer has-[:checked]:bg-pink-50 has-[:checked]:text-pink-600 rounded-md transition-all">
-                                <input type="radio" name="genre6" value="F" class="hidden">
+                                <input type="radio" name="sexes[5]" value="F" class="hidden"  <?= @$membres[5]["sexe"]=== "F" ? "checked" : "" ?>>
                                 <i class="ri-women-line"></i><span class="text-sm font-bold">F</span>
                             </label>
                             <label class="px-3 py-1 cursor-pointer has-[:checked]:bg-blue-50 has-[:checked]:text-blue-600 rounded-md transition-all">
-                                <input type="radio" name="genre6" value="M" class="hidden">
+                                <input type="radio" name="sexes[5]" value="M" class="hidden"  <?= @$membres[5]["sexe"]=== "M" ? "checked" : "" ?>>
                                 <i class="ri-men-line"></i> <span class="text-sm font-bold">M</span>
                             </label>
                         </div>
@@ -257,7 +280,7 @@
         </div>
     </div>  
     
-    <!-- il s'agit de l'erreur quand on n'a pas choisir une mtière -->
+    <!-- il s'agit de l'erreur quand on n'a pas choisir une matière -->
     <div id="errorModal" class="hidden fixed inset-0 bg-black/50 flex justify-center items-center z-50 p-4">        
         <div class="bg-white p-6 h-[35vh] rounded-lg shadow-2xl max-w-md w-full text-center border-t-4 border-red-600">
             <i class="ri-error-warning-fill text-red-500 text-4xl"></i>
@@ -300,13 +323,13 @@
             </p>
             
             <div class="flex flex-col w-full gap-3">
-                <a href="consult.html" 
+                <a href="/siteDeGroupe/consult" 
                 class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md flex items-center justify-center gap-2">
-                    <i class="ri-eye-line text-xl"></i> Consulter les groupes
+                    <i class="ri-eye-line text-xl"></i> Voir la liste
                 </a>
                 
-                <a href="index.html" 
-                class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2">
+                <a href="/siteDeGroupe/home" 
+                    class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 px-6 rounded-xl transition-all flex items-center justify-center gap-2">
                     <i class="ri-home-4-line text-xl"></i> Retour à l'accueil
                 </a>
             </div>
@@ -329,6 +352,21 @@
             <div id="invalidNamesList" class="bg-red-50 rounded-xl p-4 mb-6 max-h-40 overflow-y-auto border border-red-100">
                 <ul>
                     <!-- Ici vous enumérez les noms qui ne sont pas dans la database. -->
+                    <?php
+                        if(isset($etranger) && !empty($etranger)){
+                            foreach($etranger as $nomPrenom){
+                                $nom = $nomPrenom["nom"];
+                                $prenom = $nomPrenom["prenom"];
+                                $sexe = $nomPrenom["sexe"];
+                                echo "
+                                    <li>
+                                        <b>$nom $prenom</b>
+                                        $sexe
+                                    </li>
+                                ";
+                            }
+                        }
+                    ?>
                 </ul>
             </div>
             
@@ -361,6 +399,19 @@
             <div id="duplicateStudentsList" class="bg-amber-50 rounded-xl p-4 mb-6 max-h-40 overflow-y-auto border border-amber-100 text-left">
                 <ul>
                     <!-- Liste des étudiants doublons.. -->
+                    <?php
+                        if(isset($existe) && !empty($existe)){
+                            foreach($existe as $nomPrenom){
+                                $nom = $nomPrenom["nom"];
+                                $prenom = $nomPrenom["prenom"];
+                                $sexe = $nomPrenom["sexe"];
+                                echo "<li>
+                                    <b>$nom $prenom</b>
+                                    $sexe
+                                </li>";
+                            }
+                        }
+                    ?>
                 </ul>
             </div>
             
@@ -409,6 +460,7 @@
         }
         //cette fonctionne m'affihe le modal d'actualisation
         function showRefreshError() {
+            console.log("refresh");
             document.getElementById('refreshModal').classList.remove('hidden');
         }
         
@@ -461,7 +513,7 @@
         }
 // Cette fonctin vérifie les champs et envoie..
         function checkInputs(){
-        //lesmembres est un tableau des noms qui exstent
+            //lesmembres est un tableau des noms qui exstent
             let lesmembres = [];
             let lesnoms = [];
             let lessexes = [];
@@ -478,7 +530,9 @@
                     }
                 })
                 //Je verifie que aucun doublon de nom n'est envoyé
-                lesnoms.push(input.value.replaceAll(' ', '').toLowerCase());
+                if(input.value !== ''){
+                    lesnoms.push(input.value.replaceAll(' ', '').toLowerCase());
+                }
             })
             lessexes.forEach(sexe=>{
                 if(sexe === "F"){
@@ -486,12 +540,37 @@
                 }
             })
             if(checkText(lesnoms, inputs) && countSexe(lesfille)){ 
+                console.log("post");
                 document.getElementById("formulaire").submit();
-                successModal();
             }else{
+                console.log("nonpost");
                 showRefreshError();
             }
         }
+        //si tous c'est bien passé
+        <?php
+            if( isset($modalSucces) && $modalSucces === true ){
+        ?>
+                successModal();
+        <?php    
+            }
+        ?>
+        //si on a des boublons
+        <?php
+            if( isset($existe) && !empty($existe)){
+        ?>
+                occupes();
+        <?php
+            }
+        ?>
+        //si on a des hors de la classe
+        <?php
+            if(isset($etranger) && !empty($etranger)){
+        ?>
+                horsClasse();
+        <?php
+            }
+        ?>
 //cette partie me permet de désactiver automatiquement le 6e champ d'un groupe en même temps.     
         let nbrDe3 = document.getElementById("nbrDe3");
         if(nbrDe3.textContent === "3"){

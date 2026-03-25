@@ -6,7 +6,7 @@
     <title>Plateforme de création de groupes GEI IT2</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         /* Style focus pour tes futurs inputs si nécessaire */
         input:focus { 
@@ -42,7 +42,7 @@
                 <div class="flex justify-between h-20 items-center">
                     <div class="flex items-center gap-4">
                         <div class="bg-gradient-to-br from-amber-600 to-yellow-500 p-2.5 rounded-xl shadow-xs shadow-amber-200">
-                            <a href="index.html">
+                            <a href="/siteDeGroupe/home">
                                 <i class="ri-team-fill text-white text-2xl"></i>
                             </a>
                         </div>
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     
-                    <a href="create.html" class="flex items-center bg-slate-900 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 group">
+                    <a href="/siteDeGroupe/create" class="flex items-center bg-slate-900 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 group">
                         <i class="ri-add-circle-fill mr-2 text-xl group-hover:rotate-90 transition-transform"></i> 
                         <span class="hidden sm:inline">Nouveau Groupe</span>
                     </a>
@@ -83,59 +83,93 @@
     </footer>
 
     <script>
-        const groupesDeTest = [
-            { matiere: "PHP", membres: ["Jean Dupont", "Marie Curie", "ALICE WATSON"] },
-            { matiere: "POO Java", membres: ["Bob Marley", "Charlie Chaplin"] },
-            { matiere: "GPL", membres: ["Prophète Samuel", "Nicolas Tesla", "Ada Lovelace", "Steve Jobs", "Elon Musk", "Grace Hopper"] }
-        ];
+        let groupes = <?= json_encode($lists ?? []) ?>;
 
-        function formaterCarteGroupe(groupe, numero) {
-            const nbMembres = groupe.membres.length;
-            const delay = numero * 90; // Pour l'animation en cascade
+        let lesgroupes = [];
+        let k = -1;
 
-            const listeMembres = groupe.membres.map((membre, i) => {
-                const leRespo = i === 0;
-                return `
-                    <li class="flex items-center p-3 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100 group/item">
-                        <div class="w-9 h-9 rounded-full ${leRespo ? 'bg-amber-600 text-white shadow-md' : 'bg-slate-100 text-slate-500'} flex items-center justify-center text-xs font-black mr-4 group-hover/item:scale-110 transition-transform">
-                            ${i + 1}
-                        </div>
-                        <span class="capitalize text-slate-700 font-semibold text-sm">${membre.toLowerCase().trim()}</span>
-                        ${leRespo ? '<span class="ml-auto text-[9px] font-black text-amber-600 uppercase tracking-tighter">Responsable</span>' : ''}
-                    </li>`;
-            }).join('');
+        groupes.forEach(membre => {
+            if(membre.chef == 1 || k === -1){
+                k++;
+                lesgroupes[k] = [];
+            }
+            lesgroupes[k].push(membre);
+        });
 
-            return `
-                <div class="group-card bg-white rounded-[2.5rem] p-2 border border-slate-200 transition-all duration-500 animate-card shadow-sm" style="animation-delay: ${delay}ms">
-                    <div class="bg-slate-50 rounded-[2rem] p-6 mb-2">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="bg-amber-100 text-amber-700 text-[10px] px-3 py-1 rounded-full font-black uppercase tracking-widest">
-                                ${groupe.matiere}
-                            </span>
-                        </div>
-                        <h3 class="policeTitre text-2xl font-bold text-slate-800">Groupe 0${numero}</h3>
-                    </div>
-                    
-                    <div class="px-4 py-2">
-                        <ul class="space-y-1">
-                            ${listeMembres}
-                        </ul>
-                    </div>
-                    
-                    <div class="p-4 mt-2 flex items-center justify-center border-t border-slate-50">
-                        <span class="text-xs font-bold text-slate-400 italic">${nbMembres} étudiants inscrits</span>
-                    </div>
+function formaterCarteGroupe(groupe, index) {
+    const nbMembres = groupe.length;
+
+    const listeMembres = groupe.map((membre, i) => {
+        const leRespo = i === 0;
+
+        return `
+            <li class="flex items-center p-3 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100 group/item">
+
+                <div class="w-9 h-9 rounded-full ${
+                    leRespo 
+                        ? 'bg-amber-600 text-white shadow-md' 
+                        : 'bg-slate-100 text-slate-500'
+                } flex items-center justify-center text-xs font-black mr-4 group-hover/item:scale-110 transition-transform">
+                    ${i + 1}
                 </div>
-            `;
-        }
+
+                <span class="capitalize text-slate-700 font-semibold text-sm">
+                    ${(membre.nom ?? "").toUpperCase()} ${(membre.prenom ?? "").toLowerCase().trim()}
+                </span>
+
+                ${
+                    leRespo 
+                        ? '<span class="ml-auto text-[9px] font-black text-amber-600 uppercase tracking-tighter">Responsable</span>' 
+                        : ''
+                }
+
+            </li>
+        `;
+    }).join('');
+
+    return `
+        <div class="bg-white rounded-3xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-100 overflow-hidden">
+
+            <!-- HEADER -->
+            <div class="flex items-center justify-between px-5 py-4 bg-gradient-to-r from-slate-50 to-slate-100 border-b">
+                <h2 class="text-sm font-black text-slate-700">
+                    Groupe ${index+1}
+                </h2>
+
+                <span class="text-xs font-bold text-slate-400">
+                    ${nbMembres} membres
+                </span>
+            </div>
+
+            <!-- MEMBRES -->
+            <div class="px-4 py-3 space-y-2">
+                ${listeMembres}
+            </div>
+
+            <!-- FOOTER -->
+            <div class="px-4 py-3 text-center border-t bg-slate-50">
+                <span class="text-xs italic text-slate-400">
+                    ${nbMembres} étudiants inscrits
+                </span>
+            </div>
+
+        </div>
+    `;
+}
 
         function chargerGroupes() {
             const container = document.getElementById('groupContainer');
-            document.getElementById('totalGroupes').innerText = groupesDeTest.length;
-            container.innerHTML = groupesDeTest.map((g, i) => formaterCarteGroupe(g, i + 1)).join('');
+
+            document.getElementById('totalGroupes').innerText = lesgroupes.length;
+
+            if(!container) return;
+
+            container.innerHTML = lesgroupes
+                .map((g, i) => formaterCarteGroupe(g, i))
+                .join('');
         }
 
         window.onload = chargerGroupes;
-    </script>
+    </script>   
 </body>
 </html>
