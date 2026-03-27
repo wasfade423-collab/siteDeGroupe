@@ -46,11 +46,12 @@
                 ?>
             </b></span>
         </div>
+        <!-- 
         <div class="h-4 w-px bg-slate-300 hidden md:block"></div>
         <div class="flex items-center gap-2 text-slate-600 text-sm font-medium">
             <i class="ri-user-add-line text-yellow-600"></i>
             <span>Groupes de 6 : <b class="text-slate-900" id="nbrDe3">3</b></span>
-        </div>
+        </div> -->
     </div>
 
 
@@ -130,7 +131,7 @@
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-yellow-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">1</div>
                         <input type="text" placeholder="NOM Prénom (Ex: KODJO Jean)" name="nomPrenoms[]" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required
-                            value="<?= isset($membres) ? $membres[0]["nom"]." ".$membres[0]["prenom"] : "" ?>"
+                            value="<?= isset($membres[0]) ? $membres[0]["nom"]." ".$membres[0]["prenom"] : "" ?>"
                         >                    
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
@@ -148,7 +149,7 @@
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-slate-200 text-slate-600 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">2</div>
                         <input type="text" placeholder="NOM Prénom" name="nomPrenoms[]" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required
-                            value="<?= isset($membres) ? $membres[1]["nom"]." ".$membres[1]["prenom"] : "" ?>"
+                            value="<?= isset($membres[1]) ? $membres[1]["nom"]." ".$membres[1]["prenom"] : "" ?>"
                         >
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
@@ -166,7 +167,7 @@
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-slate-200 text-slate-600 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">3</div>
                         <input type="text" placeholder="NOM Prénom" name="nomPrenoms[]" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required
-                            value="<?= isset($membres) ? $membres[2]["nom"]." ".$membres[2]["prenom"] : "" ?>"
+                            value="<?= isset($membres[2]) ? $membres[2]["nom"]." ".$membres[2]["prenom"] : "" ?>"
                         >
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
@@ -184,7 +185,7 @@
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-slate-200 text-slate-600 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">4</div>
                         <input type="text" placeholder="NOM Prénom" name="nomPrenoms[]" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required
-                            value="<?= isset($membres) ? $membres[3]["nom"]." ".$membres[3]["prenom"] : "" ?>"
+                            value="<?= isset($membres[3]) ? $membres[3]["nom"]." ".$membres[3]["prenom"] : "" ?>"
                         >
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
@@ -202,7 +203,7 @@
                     <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-wrap md:flex-nowrap gap-4 items-center shadow-sm">
                         <div class="bg-slate-200 text-slate-600 w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">5</div>
                         <input type="text" placeholder="NOM Prénom" name="nomPrenoms[]" class="input-nom flex-1 bg-slate-50 border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500" required
-                            value="<?= isset($membres) ? $membres[4]["nom"]." ".$membres[4]["prenom"] : "" ?>"
+                            value="<?= isset($membres[4]) ? $membres[4]["nom"]." ".$membres[4]["prenom"] : "" ?>"
                         >
                         <div class="flex items-center bg-slate-100 p-1 rounded-lg">
                             <label class="flex items-center gap-1 px-3 py-1 cursor-pointer has-[:checked]:bg-white has-[:checked]:text-pink-600 has-[:checked]:shadow-sm rounded-md transition-all">
@@ -229,7 +230,7 @@
                         <div class="bg-slate-400 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shrink-0">6</div>
                         
                         <input type="text" placeholder="NOM Prénom (Optionnel)"  name="nomPrenoms[]" class="input-nom flex-1 bg-white border border-slate-200 p-3 rounded-lg outline-none focus:border-yellow-500"
-                            value="<?= isset($membres) ? $membres[5]["nom"]." ".$membres[5]["prenom"] : "" ?>"
+                            value="<?= isset($membres[5]) ? $membres[5]["nom"]." ".$membres[5]["prenom"] : "" ?>"
                         >
                         
                         <div class="flex items-center bg-white p-1 rounded-lg border border-slate-200">
@@ -335,7 +336,7 @@
             </div>
         </div>
     </div>
-    <!-- Ici il y a le modal qui va s'"afficher si un groupe essaie d'envoyer un nom qui n'est pas dans la liste de la classe."-->
+    <!-- Ici il y a le modal qui va s'afficher si un groupe essaie d'envoyer un nom qui n'est pas dans la liste de la classe."-->
     <div id="horsClasse" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">        
         <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-md w-full text-center border-t-4 border-red-600 animate-in fade-in zoom-in duration-200">
             
@@ -380,6 +381,43 @@
             </button>
         </div>
     </div> 
+
+    <!-- Ici il y a le modal qui va s'afficher le nombre de participant est different de 5 et 6"-->
+    <div id="nonPermis" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">        
+        <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-md w-full text-center border-t-4 border-red-600 animate-in fade-in zoom-in duration-200">
+            
+            <div class="mb-4">
+                <i class="ri-user-unfollow-fill text-red-500 text-5xl"></i>
+            </div>
+
+            <h3 class="text-red-600 text-xl font-bold mb-2 policeTitre">Étudiant(s) introuvable(s)</h3>
+            
+            <p class="text-gray-600 text-sm mb-4 policeText">
+                Les noms suivants ne figurent pas sur la liste officielle de la classe :
+            </p>
+
+            <div id="invalidNamesList" class="bg-red-50 rounded-xl p-4 mb-6 max-h-40 overflow-y-auto border border-red-100">
+                <ul>
+                    <!-- Ici vous enumérez les noms qui ne sont pas dans la database. -->
+                    <?php
+                        if(isset($errorNbreModal) && !empty($errorNbreModal)){
+                            echo $errorNbreModal;
+                        }
+                    ?>
+                </ul>
+            </div>
+            
+            <p class="text-xs text-gray-400 mb-6 italic">
+                Vérifiez l'orthographe (NOM en majuscules) ou nous demandez simplement quoi écris..
+            </p>
+
+            <button onclick="closehorsClasse()" 
+                class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md active:scale-95">
+                Corriger les noms
+            </button>
+        </div>
+    </div>     
+
     <!-- Ici il y a le modal qui va s'"afficher si un groupe essaie d'envoyer un nom qui  est déjà dans un groupe."-->
     <div id="occupes" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">        
         <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-md w-full text-center border-t-4 border-red-600 animate-in fade-in zoom-in duration-200">
@@ -430,6 +468,16 @@
             const modal = document.getElementById('rulesModal');
             modal.classList.toggle('hidden');
         }   
+
+        //fonction qui se déclenche quand il y a erreur serveur: Le nombre de membre envoyé ne se respecte pas la base.
+        function nonPermis(){
+            document.getElementById("nonPermis").classList.remove("hidden");
+        }
+
+        //fonction qui ferme le modal de la fonctio si dessus
+        function closenonPermis(){
+            document.getElementById("nonPermis").classList.add("hidden");
+        }        
 
         //fonction qui se déclenche quand il y a erreur serveur: Le nom envoyé ne se trouve pas dans la base.
         function horsClasse(){
@@ -502,7 +550,7 @@
                 return true;
             }    
         }
-//Cette fonction confirme le nombre de fille      
+//Cette fonction confirme le nombre de filles (au moins une)
         function countSexe(sexes){
             if(sexes > 2 || sexes <= 0){
                 return false;
@@ -530,7 +578,7 @@
                     }
                 })
                 //Je verifie que aucun doublon de nom n'est envoyé
-                if(input.value !== ''){
+                if(input.value){
                     lesnoms.push(input.value.replaceAll(' ', '').toLowerCase());
                 }
             })
@@ -571,6 +619,16 @@
         <?php
             }
         ?>
+
+        //si on a un nombrepas conforme
+        <?php
+            if(isset($errorNbreModal) && !empty($errorNbreModal)){
+        ?>
+                nonPermis();
+        <?php
+            }
+        ?>
+
 //cette partie me permet de désactiver automatiquement le 6e champ d'un groupe en même temps.     
         let nbrDe3 = document.getElementById("nbrDe3");
         if(nbrDe3.textContent === "3"){

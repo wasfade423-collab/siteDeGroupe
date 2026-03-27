@@ -34,30 +34,33 @@
                     $nomPrenoms = $_POST['nomPrenoms'];
                     $sexes = $_POST['sexes'];
                     $membres = [];
-                    foreach($nomPrenoms as $index=>$nomPrenom){
-                        if(!empty($nomPrenom)){
-                            $membre["nom"] = explode(' ', $nomPrenom)[0]; 
-                            $membre["prenom"] = explode(' ', $nomPrenom)[1]; 
-                            $membre["sexe"] = $sexes[$index];             
-                            $membres[]=$membre;             
+                        // $errorNbreModal = "Le groupe doit avoir 5 ou 6 membres.";
+                        foreach($nomPrenoms as $index=>$nomPrenom){
+                            if(!empty($nomPrenom)){
+                                $membre["nom"] = explode(' ', $nomPrenom)[0]; 
+                                $membre["prenom"] = explode(' ', $nomPrenom)[1]; 
+                                $membre["sexe"] = $sexes[$index];             
+                                $membres[]=$membre;             
+                            }
                         }
-                    }
-                    // echo json_encode($membres);
-                    // echo "<br><br>";
-                    // "membres"] = $membres;
-                    $creation = $this->model->createGroupe($membres);
-                    // echo json_encode($creation);
-                    if(isset($creation["cree"]) && !empty($creation['cree'])){
-                        if($creation["cree"]){
+                        // echo json_encode($membres);
+                        // echo "<br><br>";
+                        // "membres" = $membres;
+                        $creation = $this->model->createGroupe($membres);
+                        if(isset($creation["cree"]) && $creation["cree"] === true){
                             $modalSucces = true;
                         }
-                    }elseif(isset($creation["existe"]) && !empty($creation["existe"])){
-                        $modalExiste = true;
-                        $existe = $creation["existe"];
-                    }elseif(isset($creation["etranger"]) && !empty($creation["etranger"])){
-                        $modelEtranger = true;
-                        $etranger = $creation["etranger"];
-                    }
+
+                        if(isset($creation["existe"]) && !empty($creation["existe"])){
+                            $modalExiste = true;
+                            $existe = $creation["existe"];
+                        }
+
+                        if(isset($creation["etranger"]) && !empty($creation["etranger"])){
+                            $modelEtranger = true;
+                            $etranger = $creation["etranger"];
+                        }
+                    
                 }
             }
             include("vue/create.php");

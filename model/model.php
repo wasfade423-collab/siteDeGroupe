@@ -11,8 +11,9 @@
             try{
                 $this->database->beginTransaction();
 
+                // 1) Vérifier les membres avant insertion
                 foreach($membres as $index=>$membre){
-
+                    // Vérifie si l'étudiant fait partie de la classe
                     $stmt = $this->database->prepare(
                         "SELECT nom, prenom, sexe FROM etudiants WHERE nom = :nom AND prenom = :prenom AND sexe = :sexe"
                     );
@@ -22,30 +23,39 @@
                     $stmt->execute();
                     if(!$stmt->fetch()){
                         $retour["etranger"][] = $membre;
+                        continue;
                     }
 
+                    // Vérifie si l'étudiant est déjà inscrit dans un groupe
                     $stmt2 = $this->database->prepare(
                         "SELECT nom, prenom, sexe FROM groupes WHERE nom = :nom AND prenom = :prenom AND sexe = :sexe"
                     );
                     $stmt2->bindParam(":nom", $membre["nom"]);
                     $stmt2->bindParam(":prenom", $membre["prenom"]);
-                    $stmt2->bindParam(":sexe", $membre["sexe"]);     
+                    $stmt2->bindParam(":sexe", $membre["sexe"]);
                     $stmt2->execute();
-                    
                     if($stmt2->fetch()){
                         $retour["existe"][] = $membre;
                     }
+                }
 
+                // Si un problème a été détecté, rollback et stop
+                if((isset($retour["etranger"]) && !empty($retour["etranger"])) || (isset($retour["existe"]) && !empty($retour["existe"]))){
+                    $this->database->rollBack();
+                    return $retour;
+                }
+
+                // 2) Insère le groupe si toutes les validations sont OK
+                foreach($membres as $index=>$membre){
                     $stmt3 = $this->database->prepare(
                         "INSERT INTO groupes SET nom = :nom, prenom = :prenom, sexe = :sexe, chef = :chef"
                     );
                     $chef = $index === 0 ? 1 : 0;
                     $stmt3->bindParam(":nom", $membre["nom"]);
                     $stmt3->bindParam(":prenom", $membre["prenom"]);
-                    $stmt3->bindParam(":sexe", $membre["sexe"]);     
+                    $stmt3->bindParam(":sexe", $membre["sexe"]);
                     $stmt3->bindParam(":chef", $chef);
                     $stmt3->execute();
-                    
                 }
 
                 $this->database->commit();
